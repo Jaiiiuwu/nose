@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Teamomuxo </title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: monospace;
+            flex-direction: column;
+            color: #e67070;
+            background: linear-gradient(135deg, #f6e0a2, #f9f4db); 
+            padding: 0 20px;
+            overflow: hidden; /* Evitar el desbordamiento */
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            width: 100%; 
+            max-width: 500px;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #e67070;
+            font-family: monospace;
+            margin-bottom: 20px;
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        .yes-button, .no-button {
+            font-size: 1.5em;
+            padding: 12px 25px;
+            margin: 10px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: monospace;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .yes-button {
+            background-color: #6ee7b7;
+            color: white;
+        }
+
+        .yes-button:hover {
+            background-color: #34d399;
+            transform: scale(1.1);
+        }
+
+        .no-button {
+            background-color: #f87171;
+            color: white;
+        }
+
+        .no-button:hover {
+            background-color: #dc2626;
+            transform: scale(1.05);
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+
+        .no-button:active {
+            animation: shake 0.3s ease-in-out;
+        }
+
+        .gif_container img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            background-color: transparent;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .gif_container img:hover {
+            transform: scale(1.1); 
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em; 
+            }
+
+            .gif_container img {
+                max-width: 90%; 
+            }
+
+            .container {
+                padding: 20px; 
+                max-width: 100%; 
+            }
+
+            .yes-button, .no-button {
+                font-size: 1.2em; /* Ajuste para pantallas más pequeñas */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .yes-button, .no-button {
+                font-size: 1.1em; /* Ajuste para pantallas muy pequeñas */
+                padding: 10px 20px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="firstPage">
+        <h1>¿Keres ser mi San Valentín? (^///^)</h1>
+        <div class="buttons">
+            <button class="yes-button" onclick="handleYesClick()">Sipuwu</button>
+            <button class="no-button" onclick="handleNoClick()">Mnno</button>
+        </div>
+        <div class="gif_container">
+            <img src="https://i.pinimg.com/originals/d6/21/39/d6213905a25ebb6550c09f50c623c6ab.gif" alt="GIF1">
+        </div>
+    </div>
+
+    <!-- Nueva estructura para la segunda página -->
+    <div class="container" id="secondPage" style="display: none;">
+        <h1 class="header_text">Obiamente ibasa desirkesi mamas	(/▽＼)</h1>
+        <div class="gif_container">
+            <img src="https://i.pinimg.com/originals/f1/27/b9/f127b92860ae1e34f6730f49090e2e71.gif" alt="GIF2">
+        </div>
+    </div>
+
+    <script>
+        const mensajes = [
+            "No..?","PQNO...","yanomamas","Di k simiamor, andale",
+            "ANDALEEE","Si dises keno, voiayorar:'v","Peromucho",
+            "Muchomuchote:'''''c","Siokentiendo","YADIKESI",
+            "YAMEKOR DIME QNO M AMAS","PQTODAVUA NOO","ENTIENDO EL ODIO"
+        ];
+        
+        let indiceMensaje = 0;
+        
+        function handleNoClick() {
+            const botonNo = document.querySelector('.no-button');
+            const botonSi = document.querySelector('.yes-button');
+            botonNo.textContent = mensajes[indiceMensaje];
+            indiceMensaje = (indiceMensaje + 1) % mensajes.length;
+
+            const tamanoActual = parseFloat(window.getComputedStyle(botonSi).fontSize);
+            botonSi.style.fontSize = `${tamanoActual * 1.5}px`;
+        }
+
+        function handleYesClick() {
+            const firstPage = document.getElementById("firstPage");
+            firstPage.style.display = "none";
+
+            const secondPage = document.getElementById("secondPage");
+            secondPage.style.display = "block";
+        }
+    </script>
+</body>
+</html>
